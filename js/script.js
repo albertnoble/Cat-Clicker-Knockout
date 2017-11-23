@@ -1,25 +1,39 @@
 var catView = function(){
     
-        this.catNameElem = ko.observable("Bob");
-        this.catImageElem = ko.observable("images/cat1.jpg");
-        this.countElem = ko.observable(0);
+    this.currentCat = ko.observable(new Cat());  
 
-        this.incrementCounter = function(){
-            this.countElem(this.countElem() + 1);
-        };
+    this.incrementCounter = function(){
+        this.count(this.count() + 1);
+    };
         
-        this.levels = ko.computed(function(){
-            var stages = ["Baby", "Infant","Kid","Teen","Adult","Senior"];
-            var num = this.countElem()/10;
-            console.log(num);
-            if(num > 10){
-                return "Grand Master";
-            }else if(num > 5){
-                return stages[5];
-            }else{
-                return stages[parseInt(num)];
-            }
-        }, this);
+};
+
+var Cat = function(){
+    
+    this.name = ko.observable("Bob");
+    this.img= ko.observable("images/cat1.jpg");
+    this.count = ko.observable(0);
+    this.names = [
+        { nickname: 'AlexMan'},
+        { nickname: 'Dunken'},
+        { nickname: 'Apples'},
+        { nickname: 'Nugget'},
+        { nickname: 'Charles C. At'}
+    ];
+    
+    this.levels = ko.computed(function(){
+        var stages = ["Baby", "Infant","Kid","Teen","Adult","Senior"];
+        var num = this.count()/10;
+        console.log(num);
+        if(num > 10){
+            return "Grand Master";
+        }else if(num > 5){
+            return stages[5];
+        }else{
+            return stages[parseInt(num)];
+        }
+    }, this);
+    
 };
 
 ko.applyBindings(new catView());

@@ -20,12 +20,17 @@
 
     <div class="row content">
         <div class="col-sm-12">
-            <div class="cat">
-                <h2 data-bind="text: catNameElem">No Name</h2>
+            <div class="cat" data-bind="with: currentCat">
+                <h2 data-bind="text: name">No Name</h2>
                 <h3 data-bind="text: levels">level</h3>
-                <img id="cat-pic" src="images/cat1.jpg" data-bind="attr: {src: catImageElem}, 
-                click: incrementCounter">
-                <h2 data-bind="text: countElem">0</h2>
+                <h2 data-bind="text: count">0</h2>
+                <img id="cat-pic" src="images/cat1.jpg" data-bind="attr: {src: img}, 
+                click: $parent.incrementCounter">
+                <br>
+                <h2>Nicknames:</h2>
+                <ul data-bind="foreach: names">
+                    <li data-bind="text: nickname"></li>
+                </ul>
             </div>
         </div>
     </div>
