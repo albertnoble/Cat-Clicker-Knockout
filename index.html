@@ -19,7 +19,12 @@
     </header>
 
     <div class="row content">
-        <div class="col-sm-12">
+        <div class="col-sm-3">
+            <ul data-bind="foreach: catList">
+                <li data-bind="text: name, click: $parent.setCat"></li>
+            </ul>
+        </div>
+        <div class="col-sm-9">
             <div class="cat" data-bind="with: currentCat">
                 <h2 data-bind="text: name">No Name</h2>
                 <h3 data-bind="text: levels">level</h3>
@@ -29,7 +34,7 @@
                 <br>
                 <h2>Nicknames:</h2>
                 <ul data-bind="foreach: names">
-                    <li data-bind="text: nickname"></li>
+                    <li data-bind="text: $data"></li>
                 </ul>
             </div>
         </div>
